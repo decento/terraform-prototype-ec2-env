@@ -37,25 +37,25 @@ resource "aws_security_group" "allow_db" {
   name        = "allow_db"
   description = "Allow DB"
   vpc_id      = aws_vpc.main.id
-ingress {
-    description      = "SSH From Bastion"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
+  ingress {
+    description = "SSH From Bastion"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     security_groups = [
-        aws_security_group.bastion_sg.id
+      aws_security_group.bastion_sg.id
     ]
-}
-ingress {
-    description      = "Postgres From Bastion"
-    from_port        = 5432
-    to_port          = 5432
-    protocol         = "tcp"
+  }
+  ingress {
+    description = "Postgres From Bastion"
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
     security_groups = [
-        aws_security_group.bastion_sg.id
+      aws_security_group.bastion_sg.id
     ]
-}
-egress {
+  }
+  egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
